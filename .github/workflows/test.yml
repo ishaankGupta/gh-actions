@@ -10,7 +10,7 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: 18
-      - name: Install dependencies
+      - name: Install dependenciess
         run: npm ci
       - name: Run Tests
         run: npm run test

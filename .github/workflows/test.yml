@@ -1,4 +1,4 @@
-name: Test project
+name: Deploy Project 
 on: push
 jobs:
   test:
@@ -14,7 +14,19 @@ jobs:
         run: npm ci
       - name: Run Tests
         run: npm run test
-          
-
-
-    
+  deploy:
+      name: 'Deploy the Project post testingg'      
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get code on the above machine
+          uses: actions/checkout@v3 
+        - name: Install NodeJS
+          uses: actions/setup-node@v3
+          with: 
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+        - name: Build Project
+          run: npm run build
+        - name: Deploy 
+          run: echo "Deploying ..."
